@@ -34,13 +34,13 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
 
 
       t.timestamps null: false
-      t.string :first_name,null: false
-      t.string :last_name,null: false
-      t.string :first_name_kana,null: false
-      t.string :last_name_kana,null: false
-      t.string :postcode,null: false
-      t.string :address,null: false
-      t.string :telephone_number,null: false
+      t.string :first_name,null: false #名前（名）
+      t.string :last_name,null: false #名前（姓）
+      t.string :first_name_kana,null: false #フリガナ（名）
+      t.string :last_name_kana,null: false #フリガナ（姓）
+      t.string :postcode,null: false #郵便番号
+      t.string :address,null: false #住所
+      t.string :telephone_number,null: false #電話番号
       t.boolean :is_deleted,null: false,default: false
     end
 
