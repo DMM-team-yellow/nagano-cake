@@ -2,11 +2,11 @@ class CreateCartItems < ActiveRecord::Migration[6.1]
   def change
     create_table :cart_items do |t|
 
+      t.integer :quantity, null: false, default: 1
+      t.references :customer, null: false, foreign_key: true
+      t.references :item, null: false, foreign_key: true
+
       t.timestamps
-      t.integer :customer_id,null: false #顧客ID
-      t.integer :item_id,null: false #商品ID
-      t.integer :quantity,null: false #商品
-      
     end
   end
 end
