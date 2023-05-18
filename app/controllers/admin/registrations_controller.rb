@@ -1,3 +1,6 @@
+#不要コントローラ（管理者の会員登録画面は不要の為）
+
+
 # frozen_string_literal: true
 
 class Admin::RegistrationsController < Devise::RegistrationsController
