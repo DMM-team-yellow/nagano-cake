@@ -18,7 +18,13 @@
         <td><%= link_to item.name, edit_admin_item_path(item.id) %></td>
         <td><%= item.price %></td>
         <td><%= item.genre %></td>
-        <td><%= item.is_sold_out %></td>
+        <td> 
+           <% if item.is_sold_out %>
+            販売停止中
+           <% elsif %>
+            販売中
+           <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
