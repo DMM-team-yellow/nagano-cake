@@ -14,7 +14,12 @@ Rails.application.routes.draw do
     get '/about' => 'public/homes#about'
     resources :items, only:[:index,:show]
     resources :customers, only:[:show,:edit,:update]
-    resources :cart_items, only:[:index,:update,:destroy,:destroy_all,:create]
+    resources :cart_items, only:[:index,:update,:destroy,:destroy_all,:create] do
+      member do
+        patch 'increase'
+        patch 'decrease'
+      end
+    end
     resources :orders, only:[:new,:index,:show,:create]
     resources :addresses, only:[:index,:edit,:create,:update,:destroy]
   end
