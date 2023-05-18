@@ -34,13 +34,11 @@ ActiveRecord::Schema.define(version: 2023_05_17_064435) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "quantity", default: 1, null: false
-    t.integer "customer_id", null: false
-    t.integer "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_cart_items_on_customer_id"
-    t.index ["item_id"], name: "index_cart_items_on_item_id"
+    t.integer "customer_id", null: false
+    t.integer "item_id", null: false
+    t.integer "quantity", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -101,6 +99,4 @@ ActiveRecord::Schema.define(version: 2023_05_17_064435) do
     t.integer "total_price", null: false
   end
 
-  add_foreign_key "cart_items", "customers"
-  add_foreign_key "cart_items", "items"
 end
