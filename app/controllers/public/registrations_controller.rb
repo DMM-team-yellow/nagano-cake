@@ -2,20 +2,18 @@
 
 class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+# before_action :configure_sign_up_params, only: [:create]
+# before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  def new
-    @customers = Customer.new
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource
-  def create
-    @customers = Customer.new
-    redirect_to public_customer_path(@customers.id)
-    #render :new and return if params[:back]
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit
@@ -41,14 +39,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  def after_sign_up_path_for(resource)
-    public_customer_path
-  end
-
-  protected
+   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :telephone_number, :email, :password])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :telephone_number, :email])
   end
 
 
@@ -63,6 +57,9 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
+  # def after_sign_up_path_for(resource)
+  #   super(resource)
+  # end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
