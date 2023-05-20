@@ -13,7 +13,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     @customers = Customer.new
-    redirect_to public_customer_path(customer_id)
+    redirect_to public_customer_path(@customers.id)
+    #render :new and return if params[:back]
   end
 
   # GET /resource/edit
