@@ -5,17 +5,24 @@ class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  def new
-    @admins = Admin.new
-  end
+  #def new
+  #end
 
   # POST /resource/sign_in
-  def create
-  end
+  #def create
+   # @admin = login(params[:email],params[:password])
+    #if admin
+     # redirect_to admin_items_path
+    #else
+     # render :new
+    #end
+  #end
 
   # DELETE /resource/sign_out
-  def destroy
-  end
+  #def destroy
+    #logout
+    #redirect_to new_admin_session_path
+  #end
 
 
   def after_sign_in_path_for(resource)
