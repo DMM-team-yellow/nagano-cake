@@ -17,6 +17,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def show
+    @item = Item.find(params[:id])  
   end
 
   def edit
@@ -29,7 +30,7 @@ class Admin::ItemsController < ApplicationController
    private
   # ストロングパラメータ
   def item_params
-    params.require(:item).permit(:image, :name, :introduction, :genre, :price, :is_sold_out)
+    params.require(:item).permit(:image, :name, :introduction, :genres_id, :price, :is_sold_out)
   end
   
 end
