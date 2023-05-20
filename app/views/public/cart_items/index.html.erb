@@ -1,3 +1,6 @@
+<div class = "conteiner">
+  <div class = "row mx-auto">
+    <div class = "col">
 <h2>ショッピングカート</h2>
 <table>
   <thead>
@@ -12,15 +15,26 @@
   <tbody>
     <% @cart_items.each do |cart_item| %>
       <tr>
-        <td><%= cart_item.item.name %></td>
-        <td><%= (cart_item.item.price*1.08).to_i %></td>
-        <td><%= cart_item.quantity %></td>
         <td>
-          <% subtotal = ((cart_item.item.price*cart_item.quantity)*1.08).to_i %><!--小計の計算-->
-          <%= subtotal %> <!--小計を表示-->
+          <%= cart_item.item.image %>
+          <%= cart_item.item.name %>
+        </td>
+        <td><%= (cart_item.item.price*1.08).to_i %></td>
+        <td>
+          <%= cart_item.quantity %>
+          <%= f.number_field :age, autocomplete: "off" %>
+        </td>
+        <td>
+          <!--小計の計算-->
+          <% subtotal = ((cart_item.item.price*cart_item.quantity)*1.08).to_i %>
+          <!--小計を表示-->
+          <%= subtotal %>
         </td>
         <td><%= link_to '削除する',public_cart_item(cart_item) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
+</div>
+</div>
