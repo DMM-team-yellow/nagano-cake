@@ -6,6 +6,7 @@ class Admin::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   def new
+    @admins = Admin.new
   end
 
   # POST /resource/sign_in
@@ -15,6 +16,12 @@ class Admin::SessionsController < Devise::SessionsController
   # DELETE /resource/sign_out
   def destroy
   end
+
+
+  def after_sign_in_path_for(resource)
+    admin_admin_path
+  end
+
 
   protected
 
