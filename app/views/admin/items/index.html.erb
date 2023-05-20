@@ -11,15 +11,21 @@
     </tr>
   </thead>
   
+ <% @items.each do |item| %>
   <tbody>
-    <% @items.each do |item| %>
       <tr>
         <td><%= item.id %></td>
         <td><%= link_to item.name, edit_admin_item_path(item.id) %></td>
         <td><%= item.price %></td>
-        <td><%= item.genre %></td>
-        <td><%= item.is_sold_out %></td>
+        <td><%= item.genre.name %></td>
+        <td> 
+           <% if item.is_sold_out == true %>
+            販売停止中
+           <% else %>
+            販売中
+           <% end %>
+        </td>
       </tr>
-    <% end %>
   </tbody>
+ <% end %>
  </table>

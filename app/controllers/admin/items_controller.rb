@@ -10,10 +10,9 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
      if @item.save
-      redirect_to admin_items_path
+      redirect_to admin_items_path(@item)
      else
-      @items = Item.all
-      render 'index'
+      render 'new'
      end
   end
 
@@ -30,7 +29,7 @@ class Admin::ItemsController < ApplicationController
    private
   # ストロングパラメータ
   def item_params
-    params.require(:item).permit(:image, :name, :introduction, :price, :is_sold_out)
+    params.require(:item).permit(:image, :name, :introduction, :genre, :price, :is_sold_out)
   end
   
 end

@@ -12,6 +12,8 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    @customers = Customer.new
+    redirect_to public_customer_path(customer_id)
   end
 
   # GET /resource/edit
@@ -38,6 +40,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def after_sign_up_path_for(resource)
+    public_customer_path
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -56,9 +62,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
