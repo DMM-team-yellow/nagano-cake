@@ -1,22 +1,44 @@
-<h2>商品新規登録</h2>
-
-　<%= form_with model: @item, url: admin_items_path do |f| %>
-　
-    <h4>商品画像</h4>
-      <%= f.file_field :image, accept: "image/*" %>
-    <h4>商品名</h4>
-      <%= f.text_field :name %>
-    <h4>商品説明</h4>  
-      <%= f.text_area :introduction %>
-    <h4>ジャンル</h4>
-      <%= f.collection_select :genre, Genre.all, :id, :name, include_blank: "--選択して下さい--" %>
-    <h4>税抜価格</h4>
-      <%= f.number_field :price %>円
-    <h4>販売ステータス</h4>
-      <%= f.radio_button :is_sold_out, :false, checked: true %>
-      <%= f.label :status_false, "販売中" %>
-      <%= f.radio_button :is_sold_out, :true %>
-      <%= f.label :status_true, "販売停止中" %>
-      
-    <%= f.submit '新規登録' %>
-  <% end %>
+<div class='container'>
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+      <h2>商品新規登録</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+    　<%= form_with model: @item, url: admin_items_path do |f| %>
+　       <div class="form-group">
+          <%= f.label :商品画像 %>
+          <%= f.file_field :image, accept: "image/*" %>
+         </div>
+       　 <div class="form-group">
+          <%= f.label :商品名 %>
+          <%= f.text_field :name, class: "form-control name" %>
+         </div>
+         <div class="form-group">
+          <%= f.label :商品説明 %>
+          <%= f.text_area :introduction, class: "form-control introduction" %>
+         </div>
+         <div class="form-group">
+          <%= f.label :ジャンル %>
+          <%= f.collection_select :genres_id, Genre.all, :id, :name, include_blank: "--選択して下さい--" %>
+         </div>
+         <div class="form-group">
+          <%= f.label :税抜価格 %>
+          <%= f.number_field :price %>円
+         </div>
+         <div class="form-group">
+          <%= f.label :販売ステータス %>
+          <%= f.radio_button :is_sold_out, :false, checked: true %>
+          <%= f.label :status_false, "販売中" %>
+          <%= f.radio_button :is_sold_out, :true %>
+          <%= f.label :status_true, "販売停止中" %>
+         </div>
+    
+        <%= f.submit '新規登録' %>
+        
+      <% end %>
+     
+    </div>
+  </div>
+</div>
