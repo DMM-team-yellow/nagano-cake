@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
+  scope module: :public do
     resources :items, only:[:index,:show]
     resources :customers, only:[:show,:edit,:update]
     #カート関連
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
 
     resources :orders, only:[:new,:index,:show,:create]
     resources :addresses, only:[:index,:edit,:create,:update,:destroy]
+  end
 
   #管理者側
     devise_for :admin,skip: [:registrations, :passwords],controllers: {
