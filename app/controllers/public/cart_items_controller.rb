@@ -11,7 +11,7 @@ class Public::CartItemsController < ApplicationController
     if @cart_item
       @cart_item.quantity += CartItem.new(cart_item_params).quantity
     else
-      @cart_item = CartItem(cart_item_params)
+      @cart_item = CartItem.new(cart_item_params)
     end
     @cart_item.customer_id = current_customer.id
     @cart_item.save
@@ -39,7 +39,7 @@ class Public::CartItemsController < ApplicationController
 
   private
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :quantity)
+    params.require(:cart_item).permit(:item_id, :quantity, :price)
   end
 
 end
