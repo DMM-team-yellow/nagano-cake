@@ -1,8 +1,10 @@
 <div class = "conteiner">
-  <div class = "row mx-auto">
-    <div class = "col">
-<h2>ショッピングカート</h2>
-<table>
+  <div class = "row justify-content-between mt-3">
+      <div class = "col-lg-4 offset-lg-2"><h4>ショッピングカート</h4></div>
+      <div class = "col-lg-4"><%= link_to 'カートを空にする',destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %></div>
+      </div>
+<div class = "col-lg-8 mx-auto mt-3 ">
+<table class = "cart">
   <thead>
     <tr>
       <th>商品名</th>
@@ -30,11 +32,21 @@
           <!--小計を表示-->
           <%= subtotal %>
         </td>
-        <td><%= link_to '削除する',public_cart_item(cart_item) %></td>
+        <td><%= link_to '削除する',public_cart_item(cart_item.id), method: :delete, class: "btn btn-danger" %></td>
       </tr>
+      <% @total += cart_item.subtotal %>
     <% end %>
   </tbody>
 </table>
+<div class = "row justify-content-between">
+  <div class = "col-lg-4"><%= link_to '買い物を続ける', items_path, class: "btn btn-primary" %></div>
+  <table class = "col-lg-4">
+    <tr>
+      <th>合計金額</th>
+      <th><%= @total %></th>
+    </tr>
+  </table>
+</div>
 </div>
 </div>
 </div>
