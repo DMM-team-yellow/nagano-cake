@@ -62,11 +62,13 @@ ActiveRecord::Schema.define(version: 2023_05_18_053802) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity", default: 1, null: false
     t.integer "customer_id", null: false
     t.integer "item_id", null: false
-    t.integer "quantity", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_cart_items_on_customer_id"
+    t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -98,11 +100,12 @@ ActiveRecord::Schema.define(version: 2023_05_18_053802) do
   create_table "items", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "genre_id", null: false
+    t.integer "genres_id", null: false
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "price", null: false
     t.boolean "is_sold_out", default: false, null: false
+    t.index ["genres_id"], name: "index_items_on_genres_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -130,4 +133,7 @@ ActiveRecord::Schema.define(version: 2023_05_18_053802) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "cart_items", "customers"
+  add_foreign_key "cart_items", "items"
+  add_foreign_key "items", "genres", column: "genres_id"
 end

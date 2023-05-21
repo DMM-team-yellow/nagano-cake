@@ -1,9 +1,12 @@
 class Public::CustomersController < ApplicationController
   def show
-     @customer = Customer.all
+    @customer = Customer.find(params[:id])
+    #@address = @customer.addresses
+    #@order = @customer.orders
   end
 
   def edit
+    @customer = Customer.find(params[:id])
   end
 
   def update
@@ -14,5 +17,12 @@ class Public::CustomersController < ApplicationController
 
   def withdrawl
   end
+
+
+  private
+  def customer_params
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :postcode, :address, :telephone_number, :email)
+  end
+
 
 end
