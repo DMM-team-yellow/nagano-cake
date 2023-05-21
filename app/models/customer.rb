@@ -6,4 +6,10 @@ class Customer < ApplicationRecord
 
   has_many :cart_iems, dependent: :destroy
   has_many :addresses, dependent: :destroy
+  
+  
+  #is_deletedがfalseならtrueを返す
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 end
