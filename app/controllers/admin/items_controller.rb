@@ -12,7 +12,7 @@ class Admin::ItemsController < ApplicationController
      if @item.save
       redirect_to admin_items_path(@item)
      else
-      render 'new'
+      render :new
      end
   end
 
@@ -30,7 +30,7 @@ class Admin::ItemsController < ApplicationController
    private
   # ストロングパラメータ
   def item_params
-    params.require(:item).permit(:image, :name, :introduction, :genres_id, :price, :is_sold_out)
+    params.require(:item).permit(:image, :name, :introduction, :genre_id, :price, :is_sold_out)
   end
   
 end
