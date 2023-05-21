@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 2023_05_18_053802) do
   create_table "items", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "genres_id", null: false
+    t.integer "genre_id", null: false
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "price", null: false
@@ -133,7 +133,5 @@ ActiveRecord::Schema.define(version: 2023_05_18_053802) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "cart_items", "customers"
-  add_foreign_key "cart_items", "items"
-  add_foreign_key "items", "genres", column: "genres_id"
+
 end
