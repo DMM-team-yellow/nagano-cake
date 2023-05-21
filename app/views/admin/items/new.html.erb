@@ -1,11 +1,11 @@
 <div class='container'>
-    
+
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
       <h2>商品新規登録</h2>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="mx-auto">
     　<%= form_with model: @item, url: admin_items_path do |f| %>
@@ -36,12 +36,12 @@
           <%= f.radio_button :is_sold_out, :true %>
           <%= f.label :status_true, "販売停止中" %>
          </div>
-    
+
         <%= f.submit '新規登録' %>
-        
+
       <% end %>
-     
+
     </div>
   </div>
-  
+
 </div>
