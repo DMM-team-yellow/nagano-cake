@@ -4,6 +4,7 @@ class Public::CartItemsController < ApplicationController
     @cart_items = CartItem.all
     @items = Item.all
     @cart_item = @items.all
+    @total = 0
   end
 
   def create
