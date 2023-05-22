@@ -12,7 +12,7 @@
       <th>ステータス</th>
     </tr>
   </thead>
-  
+
  <% @items.each do |item| %>
   <tbody>
       <tr>
@@ -20,7 +20,7 @@
         <td><%= link_to item.name, admin_item_path(item.id) %></td>
         <td><%= item.price %></td>
         <td><%= item.genre.name %></td>
-        <td> 
+        <td>
            <% if item.is_sold_out == true %>
             販売停止中
            <% else %>
@@ -30,6 +30,6 @@
       </tr>
   </tbody>
  <% end %>
- 
- 
+
+
  </table>
