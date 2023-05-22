@@ -103,7 +103,6 @@ ActiveRecord::Schema.define(version: 2023_05_18_053802) do
     t.text "introduction", null: false
     t.integer "price", null: false
     t.boolean "is_sold_out", default: false, null: false
-    t.index ["genre_id"], name: "index_items_on_genre_id"
   end
 
   create_table "order_items", force: :cascade do |t|

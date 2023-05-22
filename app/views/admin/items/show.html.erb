@@ -11,8 +11,8 @@
            <th><%= @item.name %></th>
          </tr>
          <tr>
-	         <th>商品説明</th>
-	         <th><%= @item.introduction %></th>
+	       <th>商品説明</th>
+	       <th><%= @item.introduction %></th>
          </tr>
          <tr>
        	   <th>ジャンル</th>
@@ -20,10 +20,10 @@
          </tr>
          <tr>
            <th>税込価格</br>（税抜価格）</th>
-           <th></th>
+           <th><%= (@item.price*0.8).floor %>(<%= @item.price %>)</th>
          </tr>
          <tr>
-        	 <th>販売ステータス</th>
+           <th>販売ステータス</th>
   	       <th>
   	    　    <% if @item.is_sold_out == true %>
                 販売停止中
@@ -32,7 +32,7 @@
               <% end %>
            </th>
          </tr>
-        </div>  
+      </div>  
          
          <tr>
            <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-sm btn-success"%>
