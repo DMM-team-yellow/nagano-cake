@@ -1,35 +1,50 @@
-<h2>商品一覧</h2>
+<div class='container'>
+
+  <div class="row">
+
+    <h2>商品一覧</h2>
+     
+     <div>
+     <%= link_to new_admin_item_path, class: 'btn btn-default' do %>
+      <button type="button" class="btn btn-secondary rounded-circle p-0" style="width:2rem;height:2rem;">＋</button>
+     <% end %>
+     </div>
+     
+     
+      <table class="table table-borderless">
+        <thead class="table-dark">
+          <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </tr>
+        </thead>
+
+       <% @items.each do |item| %>
+        <tbody>
+            <tr>
+              <td><%= item.id %></td>
+              <td><%= link_to item.name, admin_item_path(item.id) %></td>
+              <td><%= item.price %></td>
+              <td><%= item.genre.name %></td>
+             <td>
+                 <% if item.is_sold_out == true %>
+                  販売停止中
+                 <% else %>
+                  販売中
+                 <% end %>
+             </td>
+            </tr>
+        </tbody>
+       <% end %>
+
+       </table>
+       
+    <%= paginate @items %>
+    
+  </div>
+</div>
 
 
-
-<table>
-  <thead>
-    <tr>
-      <th>商品ID</th>
-      <th>商品名</th>
-      <th>税抜価格</th>
-      <th>ジャンル</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-
- <% @items.each do |item| %>
-  <tbody>
-      <tr>
-        <td><%= item.id %></td>
-        <td><%= link_to item.name, admin_item_path(item.id) %></td>
-        <td><%= item.price %></td>
-        <td><%= item.genre.name %></td>
-        <td>
-           <% if item.is_sold_out == true %>
-            販売停止中
-           <% else %>
-            販売中
-           <% end %>
-        </td>
-      </tr>
-  </tbody>
- <% end %>
-
-
- </table>
