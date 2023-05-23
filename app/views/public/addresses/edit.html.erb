@@ -1,11 +1,39 @@
-<h5>配送先編集</h5>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+        <div style="padding:20px 0px 20px 100px;">
+          <h5>配送先編集</h5>
+        </div>
+    </div>
+  </div>
 
 <%= form_with model: @address, url: address_path(@address) do |f| %>
-<%= f.label :postcode, "郵便番号(ハイフンなし)" %>
-<%= f.text_field :postcode %><br>
-<%= f.label :address, "住所" %>
-<%= f.text_field :address %><br>
-<%= f.label :name, "宛名" %>
-<%= f.text_field :name %>
-<%= f.submit "変更内容を保存", class: "btn btn-success btn-sm" %>
+<div class="row">
+  <div class="col-3">
+    <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+  </div>
+  <div class="col-3">
+    <%= f.text_field :postcode %><br>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+    <%= f.label :address, "住所" %>
+  </div>
+  <div class="col-3">
+    <%= f.text_field :address, size: 40 %><br>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+    <%= f.label :name, "宛名" %>
+  </div>
+  <div class="col-3">
+    <%= f.text_field :name %>
+  </div>
+  <div class="col-6" style="padding-left:140px;">
+    <%= f.submit "変更内容を保存", class: "btn btn-success btn-sm" %>
+  </div>
+</div>
 <% end %>
+</div>
