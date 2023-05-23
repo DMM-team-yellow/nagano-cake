@@ -9,18 +9,15 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
-
-  #退会処理関連
-  get '/customers/:id/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
-  patch '/customers/:id/withdrawal' => 'public/customers#withdrawal', as: 'withdrawal'
-
   scope module: :public do
     resources :items, only:[:index,:show]
     resources :customers, only:[:show,:edit,:update]
     #カート関連
     delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all_cart_items'
     resources :cart_items, only:[:index,:update,:destroy,:create]
-
+    #注文情報入力・注文情報確認関連
+    post '/orders/confirm' => 'public/orders/confirm'
+    get '/orders/complete' => 'public/orders/complete'
     resources :orders, only:[:new,:index,:show,:create]
     resources :addresses, only:[:index,:edit,:create,:update,:destroy]
   end
@@ -38,7 +35,6 @@ Rails.application.routes.draw do
     resources :orders, only:[:show,:update]
     resources :order_items, only:[:update]
   end
-
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
