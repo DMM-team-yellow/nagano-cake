@@ -1,19 +1,18 @@
-<div class='col-md-8 offset-md-1'>
-   <% @customers.each do |customer| %>
-    <h4>><%= customer.last_name %><%= customer.first_name %>さんの会員情報編集</h4>
+<div class='container'>
+  <div class="row">
+    <div>
+      <h4>さんの会員情報編集</h4>
+    </div>
+  </div>
 
-    <table>
-      <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-      <tr>
-        <td>会員ID</td>
-        <td><%= customer.customer_id %></td>
-        <% end %>
-      </tr>
-      <%= form_with model:@customer, local:true do |f| %>
+  <div class="row">
+
+      <!--<form>-->
+        <div class="form-row">
+          <div class="form-group col-md-6">
+          <%= form_with model: @customer, local:true do |f| %>
+          <label for="last_name" class="col-sm-2 col-form-label">氏名</label>
+
       <tr>
         <td>氏名</td>
         <td><%= f.text_field :last_name %></td>
