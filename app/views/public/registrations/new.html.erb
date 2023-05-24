@@ -96,12 +96,17 @@
       <%= f.submit "新規登録", class: 'btn btn-success' %>
     </div>
   </div>
-<% end %>
+    <% end %>
 
+  <div class="row">
+    <div class="col-lg-4">
+       <h4>既に登録済みの方</h4>
+    </div>
+  </div>
 
-
-
-
-
-  <h4>既に登録済みの方</h4>
-  <%= link_to "こちら",  new_customer_session_path %>からログインしてください。
+  <div class="row">
+    <div class="col-sm-5">
+      <p><%= link_to "こちら",  new_customer_session_path %>からログインしてください。</p>
+    </div>
+  </div>
+</div>
