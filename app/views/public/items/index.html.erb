@@ -1,28 +1,28 @@
 <div class='container'>
+  <div class="row mt-5">
 
-  <div class="row">
-    
-    <div class="col-md-2">
-        <%= render 'genre_search', genres: @genres  %>
+    <div class="col-lg-2">
+      <%= render 'genre_search', genres: @genres  %>
     </div>
-
-    <div class="col-md-8">
-    <h2>商品一覧<small>（全 <%= @item.count %> 件）</h2>
     
-    <div class="d-flex flex-wrap">
-      <% @items.each do |item| %>
-        <td>
-          <%= image_tag item.image, size: "50x50" %>
-          <%= link_to item.name, item_path(item.id) %>
-          <%= item.price %>
-        </td>
-      <% end %>
-    </div>
-      
-    <%= paginate @items %>
-    
+    <div class="col-lg-8 offset-lg-1">
+      <h2>商品一覧<small>（全 <%= @item.count %> 件）</h2>
+       <div class="row">
+        <% @items.each do |item| %>
+          <div class="col-lg-3">
+            <%= link_to item_path(item.id) do %>
+              <p><%= image_tag item.image, size: "130x100" %></p>
+              <p><%= item.name %></p>
+              <p>¥<%= item.price %></p>
+            <% end %>
+          </div>
+        <% end %>
+       </div>
+       
+       <div class="pagination justify-content-center mt-5">
+         <%= paginate @items %>
+       </div>
     </div>
 
   </div>
- 
 </div>
