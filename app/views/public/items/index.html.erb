@@ -6,17 +6,17 @@
     </div>
 
     <div class="col-lg-8 offset-lg-1">
-      <h2>商品一覧<small>（全 <%= @item.count %> 件）</h2>
+      <h3>商品一覧<small>（全 <%= @item.count %> 件）</h3>
        <div class="row">
         <% @items.each do |item| %>
           <div class="col-lg-3">
             <%= link_to item_path(item.id) do %>
               <p><%= image_tag item.image, size: "130x100" %></p>
               <p><%= item.name %></p>
-              <p>¥<%= item.price %></p>
+              <p>¥<%= (item.price*1.08).floor %></p>
             <% end %>
           </div>
-        <% end %>
+          <% end %>
        </div>
 
        <div class="pagination justify-content-center mt-5">
