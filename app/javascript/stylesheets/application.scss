@@ -6,10 +6,12 @@
   box-sizing: border-box;
 }
 
-table th, table td{
-  height: 50px;
+
+
+.footerFixed{
+    min-height: 100vh; 
+    position: relative;
+    box-sizing: border-box;
+   
 }
 
-.cart{
-  width: 100%;
-}

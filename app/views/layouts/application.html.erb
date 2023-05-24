@@ -12,8 +12,9 @@
   </head>
 
   <body>
+    <div class="footerFixed">
     <header>
-      <nav class = "navbar navbar-expand-lg navbar-light bg-light p-4">
+      <nav class = "navbar navbar-expand-lg navbar-light bg-light border-black border-bottom p-4">
         <div class = "container">
           <a class = "navbar-brand" href = "/">
             <h2>ながのCAKE</h2>
@@ -29,9 +30,10 @@
         </div>
       </nav>
     </header>
-    <main class = "mb-auto">
+    <main>
     <%= yield %>
     </main>
-    <footer class = "fixed-bottom bg-light pt-5 pb-4"></footer>
+    <footer class = "bg-light border-black border-top pt-5 pb-4"></footer>
+    </div>
   </body>
 </html>
