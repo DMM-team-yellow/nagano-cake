@@ -1,5 +1,8 @@
-<div>
-  <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
+<div class="container">
+  <div class="row">
+    <h4 class="bg-secondary"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
+  </div>
+
   <table class='table table-hover table-inverse'>
     <tbody>
       <tr>
@@ -41,9 +44,14 @@
         </td>
       </tr>
     </tbody>
-</table>
-<div>
-    <tr><%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-sm btn-success" %></tr>
-    <tr><%= link_to '注文履歴一覧を見る', admin_path, class: "btn btn-sm btn-primary" %></tr>
-</div>
+  </table>
+
+  <div class="row">
+    <div class="col-lg-4">
+      <%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-sm btn-success", style: "width:40%" %>
+    </div>
+    <div class="col-lg-5">
+      <%= link_to '注文履歴一覧を見る', admin_path, class: "btn btn-sm btn-primary" %>
+    </div>
+  </div>
 </div>

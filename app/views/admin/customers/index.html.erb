@@ -1,18 +1,23 @@
-<h4>会員一覧</h4>
-<table class='table table-hover table-inverse'>
-  <thead>
-    <tr>
-      <th>会員ID</th>
-      <th>氏名</th>
-      <th>メールアドレス</th>
-      <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="container">
+  <div class="row">
+    <h4 class="bg-secondary">会員一覧</h4>
+  </div>
+
+  <table class='table table-hover table-inverse'>
+    <thead class="table-light">
+      <tr>
+        <th>会員ID</th>
+        <th>氏名</th>
+        <th>メールアドレス</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+
     <% @customer.each_with_index do |customer, i| %>
+    <tbody>
       <tr>
         <td><%= i+1 %></td>
-        <td><%= link_to customer.last_name, admin_customer_path(customer.id) %></td>
+        <td><%= link_to customer.full_name, admin_customer_path(customer.id) %></td>
         <td><%= customer.email %></td>
         <td>
           <% if customer.is_deleted == true %>
@@ -22,7 +27,8 @@
           <% end %>
         </td>
       </tr>
+    </tbody>
     <% end %>
-    <%= paginate @customer %>
-  </tbody>
-</table>
+  </table>
+  <%= paginate @customer %>
+</div>
