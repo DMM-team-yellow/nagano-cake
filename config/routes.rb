@@ -7,6 +7,12 @@ Rails.application.routes.draw do
 }
 
 
+  #退会確認画面
+  get '/customers/:id/unsubscribe' => 'public/customers#unsubscribe', as: 'unsubscribe'
+  #論理削除用のルーティング
+  patch '/customers/:id/withdrawal' => 'public/customers#withdrawal', as: 'withdrawal'
+
+
   root to: 'public/homes#top'
   get '/about' => 'public/homes#about'
   scope module: :public do

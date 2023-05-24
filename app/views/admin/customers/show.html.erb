@@ -1,45 +1,49 @@
- <% @customer.each do |customer| %>
-  <h4><%= customer.last_name %><%= customer.first_name %>さんの会員詳細</h4>
+<div>
+  <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
   <table class='table table-hover table-inverse'>
-  <tbody>
+    <tbody>
       <tr>
         <td>会員ID</td>
-        <td><%= customer.id %></td>
+        <td><%= @customer.id %></td>
       </tr>
       <tr>
         <td>氏名</td>
-        <td><%= customer.last_name %><%= customer.first_name %></td>
+        <td><%= @customer.last_name %><%= @customer.first_name %></td>
       </tr>
       <tr>
         <td>フリガナ</td>
-        <td><%= customer.last_name_kana %><%= customer.first_name_kana %></td>
+        <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
       </tr>
       <tr>
         <td>郵便番号</td>
-        <td><%= customer.postcode %></td>
+        <td><%= @customer.postcode %></td>
       </tr>
       <tr>
         <td>住所</td>
-        <td><%= customer.address %></td>
+        <td><%= @customer.address %></td>
       </tr>
       <tr>
         <td>電話番号</td>
-        <td><%= customer.telephone_number %></td>
+        <td><%= @customer.telephone_number %></td>
       </tr>
       <tr>
         <td>メールアドレス</td>
-        <td><%= customer.email %></td>
+        <td><%= @customer.email %></td>
       </tr>
       <tr>
         <td>会員ステータス</td>
         <td>
-          <% if customer.is_deleted == true %>
+          <% if @customer.is_deleted == true %>
           <p class="text-secondary">退会</p>
           <% else %>
           <p class="text-success">有効</p>
           <% end %>
         </td>
       </tr>
-    <% end %>
-  </tbody>
+    </tbody>
 </table>
+<div>
+    <tr><%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-sm btn-success" %></tr>
+    <tr><%= link_to '注文履歴一覧を見る', admin_path, class: "btn btn-sm btn-primary" %></tr>
+</div>
+</div>
