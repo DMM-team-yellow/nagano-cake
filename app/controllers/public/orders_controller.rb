@@ -26,19 +26,35 @@ class Public::OrdersController < ApplicationController
       render 'new'
     end
       @cart_items = current_customer.cart_items.all
-      @order.customer_id = current_customer.id
   end
 
   def complete #注文完了画面
   end
 
   def create
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.save
+
+    current_customer.cart_items.each do |cart_item|
+      @ordered_item = OrderItem.new
+      @ordered_item.item_id = cart_item.item_id
+      @ordered_item.quantity = cart_item.quantity
+      @ordered_item.price = (cart_item.item.price*1.08).floor
+      @ordered_item.order_id = @order.id
+     @ordered_item.save
+    end
+    current_customer.cart_items.destroy_all
+    redirect_to orders_complete_path
   end
 
   def index
+    @orders = current_customer.orders
   end
 
   def show
+    @order = Order.find(params[:id])
+    @ordered_items = @order.ordered_items
   end
 
 private
