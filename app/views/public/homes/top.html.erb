@@ -1,8 +1,24 @@
-<div class="d-flex align-items-center justify-content-center" style="height:200px;">
-ようこそ、ながのCAKEへ！<br>
-このサイトは、ケーキ販売のECサイトになります。<br>
-会員でない方も商品の閲覧はできますが、<br>
-購入には会員登録が必要になります。
-</div>
+<div class="container">
+  <div class="d-flex align-items-center justify-content-center" style="height:200px;">
+    ようこそ、ながのCAKEへ！<br>
+    このサイトは、ケーキ販売のECサイトになります。<br>
+    会員でない方も商品の閲覧はできますが、<br>
+    購入には会員登録が必要になります。
+  </div>
 
-<h3>新着商品</h3>
+  <div class="row text-center">
+    <div class="col-lg-offset-4 col-lg-8">
+      <h3>新着商品</h3>
+    </div>
+  </div>
+
+  <div class="row">
+      <% @items.first(4).each do |item| %>
+      <div class="col-md-3">
+        <%= image_tag item.image, size: "100x100" %>
+        <p><%= item.name %></p>
+        <p>¥<%= item.price %></p>
+      </div>
+      <% end %>
+  </div>
+</div>

@@ -1,14 +1,14 @@
 <div class='container'>
   <div class="row mt-5">
-    
+
      <div class="col-lg-2">
         <%= render 'genre_search', genres: @genres  %>
      </div>
-    
+
      <div class="col-lg-3 offset-lg-1">
        <%= image_tag @item.image, size: "200x200" %>
      </div>
-      
+
      <div class="col-lg-5">
        <h4><%= @item.name %></h4>
          <p><%= @item.introduction %></p>
