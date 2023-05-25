@@ -6,9 +6,9 @@
     </div>
     
     <div class="col-lg-8 offset-lg-1">
-      <h3>商品一覧<small>（全 <%= @item.count %> 件）</h3>
+      <h3><%= @genre.name%> 一覧<small>（全 <%= @items.count %> 件）</h3>
        <div class="row">
-        <% @item.each do |item| %>
+        <% @items.each do |item| %>
           <div class="col-lg-3">
             <%= link_to item_path(item.id) do %>
               <p><%= image_tag item.image, size: "130x100" %></p>
@@ -16,13 +16,13 @@
               <p>¥<%= (item.price*1.08).floor %></p>
             <% end %>
           </div>
-          <% end %>
-       </div>
-       
-       <div class="pagination justify-content-center mt-5">
-         <%= paginate @items %>
-       </div>
+        <% end %>
+        </div>
     </div>
-
+      
+    <div class="pagination justify-content-center mt-5">
+      <%= paginate @items %>
+    </div>
+    
   </div>
 </div>
