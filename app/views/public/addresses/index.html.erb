@@ -2,6 +2,16 @@
   <div style="padding:20px 0px 20px 100px;">
     <h5>配送先登録 / 一覧</h5>
   </div>
+
+<% if @address.errors.any? %>
+  <%= @address.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
   <div style="padding:0px 0px 30px 20px;">
     <%= form_with model: @address, url: addresses_path do |f| %>
 <div class="row">
@@ -9,7 +19,7 @@
     <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
   </div>
   <div class="col-3">
-    <%= f.text_field :postcode %>
+    <%= f.text_field :postcode, placeholder: "0000000" %>
   </div>
 </div>
 <div class="row">
@@ -17,7 +27,7 @@
     <%= f.label :address, "住所" %>
   </div>
   <div class="col-3">
-    <%= f.text_field :address, size: 40 %>
+    <%= f.text_field :address, size: 40, placeholder: "東京都渋谷区代々木神園町0-0" %>
   </div>
 </div>
 <div class="row">
@@ -25,7 +35,7 @@
     <%= f.label :name, "宛名" %>
   </div>
   <div class="col-3">
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: "令和道子" %>
 </div>
   <div class="col-3" style="padding-left:140px;">
     <%= f.submit "新規登録", class: "btn btn-success btn-sm" %>
@@ -37,7 +47,7 @@
 <div class="container">
   <div class="row">
     <div class="col-9">
-<table class="table">
+<table class="table table-bordered">
   <thead>
     <tr>
       <th class="table-secondary">郵便番号</th>
