@@ -1,9 +1,11 @@
 <div class="container">
   <div class="row">
-    <h4 class="bg-secondary"><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
+    <h4 class="m-5 col-sm-3 offset-sm-2" style="background-color: #ccc;" align="center">
+      <%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細
+    </h4>
   </div>
 
-  <table class='table table-hover table-inverse'>
+  <table class='table table-hover table-inverse col-sm-5'>
     <tbody>
       <tr>
         <td>会員ID</td>
@@ -46,12 +48,12 @@
     </tbody>
   </table>
 
-  <div class="row">
-    <div class="col-lg-4">
-      <%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-sm btn-success", style: "width:40%" %>
+  <div class="row my-3 mx-3">
+    <div class="col-sm-2 offset-sm-1">
+      <%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-sm btn-block btn-success"%>
     </div>
-    <div class="col-lg-5">
-      <%= link_to '注文履歴一覧を見る', admin_path, class: "btn btn-sm btn-primary" %>
+    <div class="col-sm-2 offset-sm-1">
+      <%= link_to '注文履歴一覧を見る', admin_path, class: "btn btn-sm btn-block btn-primary" %>
     </div>
   </div>
 </div>
