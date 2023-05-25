@@ -6,6 +6,15 @@
     </div>
   </div>
 
+<% if @item.errors.any? %>
+  <%= @item.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
   <div class="row">
     <div class="mx-auto">
       
@@ -17,11 +26,11 @@
          </tr>
        　 <tr>
            <td><%= f.label :商品名, "商品名" %></td>
-           <td><%= f.text_field :name, class: "form-control name" %></td>
+           <td><%= f.text_field :name, placeholder: "商品名" %></td>
          </tr>
          <tr>
            <td><%= f.label :商品説明 %></td>
-           <td><%= f.text_area :introduction, class: "form-control introduction" %></td>
+           <td><%= f.text_area :introduction, placeholder: "商品説明 " %></td>
          </tr>
          <tr>
            <td><%= f.label :ジャンル %></td>
@@ -29,7 +38,7 @@
          </tr>
          <tr>
            <td><%= f.label :税抜価格 %></td>
-           <td><%= f.number_field :price %>円</td>
+           <td><%= f.number_field :price, placeholder: "1000" %>円</td>
          </tr>
          <tr>
            <td><%= f.label :販売ステータス %></td>

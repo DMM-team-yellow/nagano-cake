@@ -1,49 +1,4 @@
 <div class='container'>
-<<<<<<< HEAD
-
-   <h2>商品詳細</h2>
-      <div class="row">
-　　　   <div class="col-md-3">
-　　　    <%= image_tag @item.image, size: "300x300" %>
-　　　   </div>
-
-　　　   <div class="col-md-3">
-           <table>
-  　　  　     <tr>
-         　     <th>商品名</th>
-        　      <th><%= @item.name %></th>
-        　  </tr>
-       　    <tr>
-	    　     <th>商品説明</th>
-	   　      <th><%= @item.introduction %></th>
-       　    </tr>
-       　    <tr>
-        　 	   <th>ジャンル</th>
-  	     　    <th><%= @item.genre.name %></th>
-        　  </tr>
-        　  <tr>
-        　      <th>税込価格</br>（税抜価格）</th>
-         　     <th><%= (@item.price*1.08).floor %>(<%= @item.price %>)円</th>
-         　 </tr>
-         　 <tr>
-        　      <th>販売ステータス</th>
-  	    　     <th>
-  	    　        <% if @item.is_sold_out == true %>
-                   販売停止中
-                  <% else %>
-                   販売中
-                  <% end %>
-               </th>
-            </tr>
-           </table>
-
-           <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-sm btn-success"%>
-
-         </div>
-
-      </div>
-
-=======
   
   <div class="row mt-3">
     <div class="col-lg-3">
@@ -98,5 +53,4 @@
         
   </div> 
       
->>>>>>> origin/develop
 </div>
