@@ -20,7 +20,7 @@ class Public::OrdersController < ApplicationController
       #登録済住所から選択するならば
     elsif params[:order][:address_option] == "2"
       @order.ship_postcode = params[:order][:ship_postcode]
-      @order.ship_address = params[:order][:shipping_address]
+      @order.ship_address = params[:order][:ship_address]
       @order.ship_name = params[:order][:ship_name]
     else
       render 'new'
