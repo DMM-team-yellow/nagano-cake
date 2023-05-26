@@ -5,12 +5,12 @@
       <h4>商品詳細</h4>
     </div>
   </div>
-      
+
   <div class="row">
     <div class="col-lg-3 offset-lg-1">
       <%= image_tag @item.image, size: "300x300" %>
     </div>
-　　　   
+
     <div class="col-lg-6 offset-lg-1">
       <table class="table table-borderless mt-3">
   　　     <tr>
@@ -40,11 +40,11 @@
            </td>
          </tr>
       </table>
-        
+
       <div class="row">
         <div class="col-md-6 mx-auto">
-          <div class="mb-5 mx-auto">   
-           <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-sm btn-success"%> 
+          <div class="mb-5 mx-auto">
+           <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-sm btn-success"%>
           </div>
         </div>
       </div>
