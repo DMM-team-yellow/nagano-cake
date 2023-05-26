@@ -45,30 +45,32 @@
         </table>
       </table>
     </div>
+    </div>
     <div class = "row">
+      <div class = "col-10">
       <table>
         <tr><th>注文内容</th></tr>
       </table>
       <table class = "table table-bordered">
         <thead class = "table-secondary">
           <tr>
-            <th class = "col-lg-3">商品</th>
-            <th>単価（税込）</th>
-            <th>個数</th>
-            <th>小計</th>
+            <th class = "col-5">商品</th>
+            <th class = "col-2">単価（税込）</th>
+            <th class = "col-1">個数</th>
+            <th class = "col-1">小計</th>
           </tr>
         </thead>
         <tbody>
+          <% @order.order_items.each do |order_item| %>
           <tr>
-            <% @order.order_items.each do |order_item| %>
-            <td class = "col-3"><%= order_item.item.name %></td>
+            <td><%= order_item.item.name %></td>
             <td><%= (order_item.item.price*1.08).to_i %></td>
             <td><%= order_item.quantity %></td>
             <td><%= (order_item.quantity*(order_item.item.price*1.08)).to_i %></td>
-            <% end %>
           </tr>
+          <% end %>
         </tbody>
       </table>
+      </div>
     </div>
-  </div>
 </div>
