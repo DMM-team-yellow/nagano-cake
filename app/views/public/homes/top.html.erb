@@ -16,7 +16,7 @@
   </div>
 
   <div class="row">
-      <% @items.first(4).each do |item| %>
+      <% @items.each do |item| %>
       <div class="col-lg-3">
         <%= link_to item_path(item.id),class: "text-dark" do %>
         <%= image_tag item.image, size: "180x100" %>
