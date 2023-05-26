@@ -1,11 +1,12 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-lg-4">
-      <h4>会員情報編集</h4>
+    <div class="col-md-3">
+      <h4 class="m-5" style="background-color: #ccc;" align="center">会員情報編集</h4>
     </div>
   </div>
 
   <%= form_with model:@customer, local:true do |f| %>
+  <%= render "public/shared/error_messages", resource: @customer %>
   <div class="form-group row">
     <div class="col-sm-3">
       <label>氏名</label>
@@ -67,12 +68,12 @@
   </div>
 
   <div class="row">
-    <div class="action">
-      <%= f.submit "編集内容を保存", class: 'btn btn-success' %>
+    <div class="col-sm-2 m-3">
+      <%= f.submit "編集内容を保存", class: 'btn btn-sm btn-block btn-success' %>
     </div>
     <% end %>
-    <div class="col-lg-5">
-      <%= link_to "退会する", unsubscribe_path(@customer), class: "btn btn-sm btn-danger" %>
+    <div class="col-sm-2 offset-2">
+      <%= link_to "退会する", unsubscribe_path(@customer), class: "btn btn-sm btn-block btn-danger" %>
     </div>
   </div>
 </div>

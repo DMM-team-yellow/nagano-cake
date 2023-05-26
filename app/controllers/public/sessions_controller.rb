@@ -3,6 +3,17 @@
 class Public::SessionsController < Devise::SessionsController
 # before_action :configure_sign_in_params, only: [:create]
   before_action :customer_state, only: [:create]
+  before_action :authenticate_customer!, except: [:top]
+
+  def after_sign_in_path_for(resource)
+    flash[:notice] = "Signed in successfully."
+    root_path
+  end
+
+  def after_sign_out_path_for(resource)
+    flash[:notice] = "Signed out successfully."
+    root_path
+  end
 
   # GET /resource/sign_in
   # def new
@@ -28,8 +39,8 @@ class Public::SessionsController < Devise::SessionsController
      if @customer.valid_password?(params[:customer][:password])
      end
    end
-   
-   
+
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
