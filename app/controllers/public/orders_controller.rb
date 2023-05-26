@@ -50,6 +50,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @orders = Order.where(customer_id: current_customer.id)
   end
 
   def show
