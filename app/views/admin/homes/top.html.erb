@@ -29,9 +29,9 @@
           <% order.order_items.each do |order_item| %>
           <%= order_item.quantity %>
         </td>
-        <td><%= order.status %></td>
-      </tr>
+        <td><%= order.status_i18n %></td>
           <% end %>
+      </tr>
       <% end %>
     </tbody>
   </table>

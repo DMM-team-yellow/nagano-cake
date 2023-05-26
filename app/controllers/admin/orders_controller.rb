@@ -1,17 +1,19 @@
 class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
+    @order_items = @order.order_items
   end
 
   def update
-    @order = Order.find(params[:id])
-    @order_items = OrderItem.where(order_id: params[:id])
-    if @order.update(order_params)
-      @order_items.update_all(product_status: 1) if @order.status == "payment_confirmation"
+    order = Order.find(params[:id])
+    order_items = order.order_items
+    order.update(order_params)
+    if order.status == "0 or 1"
+      order_items.update_all(product_status: "1")
     end
-    redirect_to admin_order_path(@order)
+     redirect_to request.referer
   end
-  
+
   private
   def order_params
     params.require(:order).permit(:status)
