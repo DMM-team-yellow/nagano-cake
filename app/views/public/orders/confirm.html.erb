@@ -52,9 +52,7 @@
         <tr>
           <th class = "col-2">支払方法</th>
             <td class = "col-9 offset-1">
-              <%=form_with model: @order, url: "/orders/confirm", method: :post do |f| %>
-              <%= f.label :payment_method, Order.statuses.keys.map {|k| [I18n.t("enums.order.payment_method.#{k}"), k]} %>
-              <% end %>
+              <% @order.payment_method_i18n %>
             </td>
         </tr>
         <tr><th class = "col-2">お届け先</th><td class = "col-9 offset-1">
@@ -75,3 +73,4 @@
     <%= f.hidden_field :total_price %>
     <%= f.submit "注文を確定する", class: "btn btn-success" %>
   <% end %>
+</div>
