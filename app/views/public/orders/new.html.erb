@@ -5,10 +5,10 @@
   <%=form_with model: @order, url: "/orders/confirm", method: :post do |f| %>
     <h5><strong>支払方法</strong></h5>
       <p>
-        <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
+        <%= f.radio_button :payment_method,  Order.statuses.keys.map {|k| [I18n.t("enums.order.payment_method.#{k}"), k]},checked: "checked" %>
         <%= f.label :payment_method, "クレジットカード" %>
       <br>
-        <%= f.radio_button :payment_method, :銀行振込 %>
+        <%= f.radio_button :payment_method,  Order.statuses.keys.map {|k| [I18n.t("enums.order.payment_method.#{k}"), k]} %>
         <%= f.label :payment_method, "銀行振込" %>
       </p>
   <% end %>
