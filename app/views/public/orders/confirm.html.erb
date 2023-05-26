@@ -20,7 +20,7 @@
        <tbody>
          <tr>
            <td>
-             <%= cart_item.item.image %>
+             <%= image_tag cart_item.item.image, size: "30x30" %>
              <%= cart_item.item.name %>
            </td>
            <td><%= (cart_item.item.price*1.08).to_i %></td>

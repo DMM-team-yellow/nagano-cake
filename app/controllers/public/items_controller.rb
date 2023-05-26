@@ -8,6 +8,7 @@ class Public::ItemsController < ApplicationController
     
     if params[:genre_id].present?
       @genre = Genre.find(params[:genre_id])
+      @genre_items = @genre.items.where(is_sold_out: 'false')
       @items = @genre.items.where(is_sold_out: 'false').page(params[:page]).per(8)
       render :genre_result
     end
