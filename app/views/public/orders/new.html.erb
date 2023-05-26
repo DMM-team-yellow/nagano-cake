@@ -5,10 +5,10 @@
   <%=form_with model: @order, url: "/orders/confirm", method: :post do |f| %>
     <h5><strong>支払方法</strong></h5>
       <p>
-        <%= f.radio_button :payment_method,  Order.statuses.keys.map {|k| [I18n.t("enums.order.payment_method.#{k}"), k]},checked: "checked" %>
+        <%= f.radio_button :payment_method, "credit_card", checked: "checked" %>
         <%= f.label :payment_method, "クレジットカード" %>
       <br>
-        <%= f.radio_button :payment_method,  Order.statuses.keys.map {|k| [I18n.t("enums.order.payment_method.#{k}"), k]} %>
+        <%= f.radio_button :payment_method, "transfer" %>
         <%= f.label :payment_method, "銀行振込" %>
       </p>
   <% end %>
@@ -27,7 +27,7 @@
         <%= f.radio_button :address_option, 1 %>
         <%= f.label :order_address, "登録済住所から選択" %>
       <br>
-        <%= f.collection_select :customer_id, @addresses, :id, :full_address %>
+        <%= f.collection_select :customer_id, @addresses, :id, :full_address, class: "form-select" %>
       </p>
       <p>
         <%= f.radio_button :address_option, 2 %>

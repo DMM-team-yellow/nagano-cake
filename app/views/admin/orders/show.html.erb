@@ -40,8 +40,8 @@
           </tr>
         </thead>
         <tbody>
+           <% @order.order_items.each do |order_item| %>
           <tr>
-            <% @order.order_items.each do |order_item| %>
             <td><%= order_item.item.name %></td>
             <td><%= (order_item.item.price*1.08).to_i %></td>
             <td><%= order_item.quantity %></td>
@@ -54,8 +54,8 @@
               <%= f.submit "更新" , class: "btn btn-success btn-sm" %>
               <% end %>
             </td>
-            <% end %>
           </tr>
+          <% end %>
         </tbody>
       </table>
       </div>
