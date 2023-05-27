@@ -24,12 +24,14 @@
           <% end %>
         </td>
         <td>
+          <% sum = 0%>
           <% order.order_items.each do |order_item| %>
-          <%= order_item.quantity %>
+          <% sum += order_item.quantity %>
+          <% end %>
+          <%= sum %>
         </td>
         <td><%= order.status_i18n %></td>
       </tr>
-          <% end %>
       <% end %>
     </tbody>
   </table>
