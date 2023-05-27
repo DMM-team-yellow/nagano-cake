@@ -57,11 +57,13 @@
               <% end %>
             </td>
         </tr>
-        <tr><th class = "col-2">お届け先</th><td class = "col-9 offset-1">
-          〒<%= @order.ship_postcode %>
-          <%= @order.ship_address %><br>
-          <%= @order.ship_name %>
-        </td></tr>
+        <tr><th class = "col-2">お届け先</th>
+          <td class = "col-9 offset-1">
+            〒<%= @order.ship_postcode %>
+            <%= @order.ship_address %><br>
+            <%= @order.ship_name %>
+          </td>
+        </tr>
       </table>
   </div>
 </div>
