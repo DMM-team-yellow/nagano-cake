@@ -15,7 +15,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:address_option] == "1"
       ship = Address.find(params[:order][:customer_id])
       @order.ship_postcode = ship.postcode
-      @order.ship_address = ship.address
+      @order.ship_address = shipping.address
       @order.ship_name = ship.name
       #登録済住所から選択するならば
     elsif params[:order][:address_option] == "2"
