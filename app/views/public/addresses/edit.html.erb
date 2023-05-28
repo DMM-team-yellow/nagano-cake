@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+        <div style="padding:20px 0px 20px 100px;">
+          <h5 class="m-3" style="background-color: #ccc;" align="center">配送先編集</h5>
+        </div>
+    </div>
+  </div>
+
+<% if @address.errors.any? %>
+  <%= @address.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @address.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @address, url: address_path(@address) do |f| %>
+<div class="row">
+  <div class="col-3">
+    <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+  </div>
+  <div class="col-3">
+    <%= f.text_field :postcode %><br>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+    <%= f.label :address, "住所" %>
+  </div>
+  <div class="col-3">
+    <%= f.text_field :address, size: 40 %><br>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+    <%= f.label :name, "宛名" %>
+  </div>
+  <div class="col-3">
+    <%= f.text_field :name %>
+  </div>
+  <div class="col-6" style="padding-left:140px;">
+    <%= f.submit "変更内容を保存", class: "btn btn-success btn-sm" %>
+  </div>
+</div>
+<% end %>
+</div>

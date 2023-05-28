@@ -1,0 +1,77 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
+<div class="container">
+  <div class='col-md-8'>
+
+    <div class="row offset-sm-1">
+      <h4 class="m-5" style="background-color: #ccc;" align="center">マイページ</h4>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-sm-3">
+        <h5>
+          <strong>登録情報</strong>
+        </h5>
+      </div>
+      <div class="col-lg-4">
+        <%= link_to "編集する", edit_customer_path(@customer), class: "btn btn-sm btn-block btn-success" %>
+      </div>
+    </div>
+
+    <div class="row">
+    <div class="col">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+  	      <td class="table-secondary" style="width: 20%;">氏名</td>
+          <td style="width: 80%;"><%= @customer.last_name %><%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">カナ</td>
+          <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">郵便番号</td>
+          <td><%= @customer.postcode %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">住所</td>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">電話番号</td>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <td class="table-secondary">メールアドレス</td>
+          <td><%= @customer.email %></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    </div>
+
+    <div class="row m-3">
+      <div class="col-sm-2">
+        <label>
+          <strong>配送先</strong>
+        </label>
+      </div>
+      <div class="col-sm-3">
+        <%= link_to '一覧を見る', addresses_path, class: "btn btn-sm btn-block btn-primary" %>
+      </div>
+    </div>
+
+    <div class="row m-3">
+      <div class="col-sm-2">
+        <label>
+          <strong>注文履歴</strong>
+        </label>
+      </div>
+      <div class="col-sm-3">
+        <%= link_to '一覧を見る', orders_path, class: "btn btn-sm btn-block btn-primary" %>
+      </div>
+    </div>
+</div>

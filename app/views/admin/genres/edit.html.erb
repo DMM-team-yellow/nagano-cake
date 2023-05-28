@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <div style="padding:20px 0px 0px 100px;">
+        <h5 class="m-3" style="background-color: #ccc;" align="center">ジャンル編集</h5>
+      </div>
+    </div>
+  </div>
+
+<% if @genre.errors.any? %>
+  <%= @genre.errors.count %>件のエラーが発生しました
+  <ul>
+    <% @genre.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+    <%= form_with model: @genre, url: admin_genre_path do |f| %>
+    <div class="row">
+      <div class="col-2" style="padding:30px 0px;">
+        <%=  f.label :name, "ジャンル名" %>
+      </div>
+      <div class="col-3" style="padding:30px 0px;">
+        <%= f.text_field :name %>
+      </div>
+      <div class="col-3" style="padding:30px 0px;">
+        <%= f.submit "変更を保存", class: "btn btn-success btn-sm" %>
+      </div>
+    </div>
+    <% end %>
+</div>
