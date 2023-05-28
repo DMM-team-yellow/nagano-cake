@@ -1,67 +1,9 @@
 <div class = "container">
   <div class = "row mt-3">
-    <h5>注文情報確認</h5>
+    <h5 class="m-3" style="background-color: #ccc;" align="center">注文情報確認</h5>
   </div>
   <div class = "row">
-   <div class = "col-8">
-     <table class = "table-bordered">
-       <thead class = "table-secondary">
-         <tr>
-           <th>商品名</th>
-           <th>単価（税込）</th>
-           <th>数量</th>
-           <th>小計</th>
-         </tr>
-       </thead>
-       <% total = 0 %>
-       <% @cart_items.each do |cart_item| %>
-       <tbody>
-         <tr>
-           <td>
-             <%= image_tag cart_item.item.image, size: "30x30" %>
-             <%= cart_item.item.name %>
-           </td>
-           <td><%= (cart_item.item.price*1.08).to_i %></td>
-           <td><%= cart_item.quantity %></td>
-           <td>
-             <!--小計の計算-->
-             <% subtotal = ((cart_item.item.price*cart_item.quantity)*1.08).to_i %>
-             <!--小計を表示-->
-             <%= subtotal %>
-           </td>
-         </tr>
-         <% total += (cart_item.item.price*cart_item.quantity)*1.08 %>
-       </tbody>
-       <% end %>
-     </table>
-   </div>
-   <div class = "col-4">
-     <table class = "table-bordered">
-       <% @order.shipping_fee = 800 %>
-         <tr><th class = "table-secondary">送料</th><td><%= @order.shipping_fee %></td></tr>
-         <tr><th class = "table-secondary">商品合計</th><td><%= total.to_i %></td></tr>
-         <% @order.total_price = @order.shipping_fee + total.to_i %>
-         <tr><th class = "table-secondary">請求金額</th><td><%= @order.total_price %></td></tr>
-     </table>
-    </div>
-  </div>
-    <div class = "row">
-      <table class = "table table-borderless">
-        <tr>
-          <th class = "col-2">支払方法</th>
-            <td class = "col-9 offset-1">
-              <%=form_with model: @order, url: "/orders/confirm", method: :post do |f| %>
-              <%= f.label :payment_method, Order.statuses.keys.map {|k| [I18n.t("enums.order.payment_method.#{k}"), k]} %>
-              <% end %>
-            </td>
-        </tr>
-        <tr><th class = "col-2">お届け先</th>
-          <td class = "col-9 offset-1">
-            〒<%= @order.ship_postcode %>
-            <%= @order.ship_address %><br>
-            <%= @order.ship_name %>
-          </td>
-        </tr>
+
     <div class = "col-8">
       <table class = "table table-bordered">
           <thead class = "table-secondary">
@@ -108,7 +50,7 @@
     <table class = "table table-borderless">
       <tr>
         <th class = "col-2">支払方法</th>
-          <td class = "col"><% @order.payment_method_i18n %></td>
+          <td class = "col"><%= @order.payment_method_i18n %></td>
       </tr>
       <tr>
         <th>お届け先</th>
