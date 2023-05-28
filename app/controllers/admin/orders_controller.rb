@@ -13,6 +13,12 @@ class Admin::OrdersController < ApplicationController
       order_item.save
     end
     end
+     if @order.status = 4
+       @order_items.each do |order_item|
+       order_item.product_status = 3
+       order_item.save
+       end
+     end
     redirect_to admin_order_path(@order)
   end
 
