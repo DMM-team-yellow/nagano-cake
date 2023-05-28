@@ -11,13 +11,13 @@ class Public::OrdersController < ApplicationController
       @order.ship_postcode = current_customer.postcode
       @order.ship_address = current_customer.address
       @order.ship_name = current_customer.last_name + current_customer.first_name
-      #新規住所入力ならば
+      #登録済住所から選択するならば
     elsif params[:order][:address_option] == "1"
       ship = Address.find(params[:order][:customer_id])
       @order.ship_postcode = ship.postcode
       @order.ship_address = ship.address
       @order.ship_name = ship.name
-      #登録済住所から選択するならば
+      #新規住所入力ならば
     elsif params[:order][:address_option] == "2"
       @order.ship_postcode = params[:order][:ship_postcode]
       @order.ship_address = params[:order][:ship_address]
