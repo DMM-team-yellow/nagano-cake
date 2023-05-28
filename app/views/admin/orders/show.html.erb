@@ -53,9 +53,13 @@
             <td><%= (order_item.quantity*(order_item.item.price*1.08)).to_i %></td>
             <td>
 <<<<<<< HEAD
+<<<<<<< HEAD
               <%= form_with model: @order_items, url: admin_order_item_path, method: :patch, local: true do |f| %>
 =======
               <%= form_with model: order_item, url: admin_order_item_path(order_item), local: true do |f| %>
+>>>>>>> origin/main
+=======
+              <%= form_with model: order_item, url: admin_order_item_path(order_item), method: :patch, local: true do |f| %>
 >>>>>>> origin/main
               <%= f.select :product_status,  OrderItem.product_statuses.keys.map {|k| [I18n.t("enums.order_item.product_status.#{k}"), k]} %>
             </td>
