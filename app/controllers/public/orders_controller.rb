@@ -13,14 +13,14 @@ class Public::OrdersController < ApplicationController
       @order.ship_name = current_customer.last_name + current_customer.first_name
       #新規住所入力ならば
     elsif params[:order][:address_option] == "1"
-      ship = Address.find(params[:order][:customer_id])
-      @order.ship_postcode = ship.postcode
-      @order.ship_address = ship.address
-      @order.ship_name = ship.name
+      @address = Address.find(params[:order][:address_id])
+      @order.ship_postcode = @address.postcode
+      @order.ship_address = @address.address
+      @order.ship_name = @address.name
       #登録済住所から選択するならば
     elsif params[:order][:address_option] == "2"
       @order.ship_postcode = params[:order][:ship_postcode]
-      @order.ship_address = params[:order][:shipping_address]
+      @order.ship_address = params[:order][:ship_address]
       @order.ship_name = params[:order][:ship_name]
     else
       render 'new'
@@ -50,6 +50,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = Order.all
+    @orders = Order.where(customer_id: current_customer.id)
   end
 
   def show

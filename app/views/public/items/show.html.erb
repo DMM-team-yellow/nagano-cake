@@ -14,11 +14,15 @@
          <p><%= @item.introduction %></p>
          <p>¥<%= (@item.price*1.08).floor %><small>（税込）</p>
 
+       <% if customer_signed_in? %>
          <%= form_with model:@cart_item do |f| %>
            <%= f.number_field :quantity, in: 1..100 %>
            <%= f.hidden_field :item_id, :value => @item.id %>
            <%= f.submit "カートに入れる", class: "btn btn-success" %>
          <% end %>
+       <% else  %>
+         <p class="mt-5">※ログインするとカートに入れられるようになります。</p>
+       <% end %>
      </div>
 
   </div>

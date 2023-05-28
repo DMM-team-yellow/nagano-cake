@@ -14,7 +14,7 @@
               <%= @order.ship_name %>
           </td>
       </tr>
-      <tr><th>支払方法</th><td><%= @order.payment_method %></td></tr>
+      <tr><th>支払方法</th><td><%= @order.payment_method_i18n %></td></tr>
       <tr>
         <th>注文ステータス</th>
          <td>
@@ -40,22 +40,36 @@
           </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
             <% @order.order_items.each do |order_item| %>
             <tr>
+=======
+           <% @order.order_items.each do |order_item| %>
+          <tr>
+>>>>>>> origin/main
             <td><%= order_item.item.name %></td>
             <td><%= (order_item.item.price*1.08).to_i %></td>
             <td><%= order_item.quantity %></td>
             <td><%= (order_item.quantity*(order_item.item.price*1.08)).to_i %></td>
             <td>
+<<<<<<< HEAD
               <%= form_with model: @order_items, url: admin_order_item_path, method: :patch, local: true do |f| %>
+=======
+              <%= form_with model: order_item, url: admin_order_item_path(order_item), local: true do |f| %>
+>>>>>>> origin/main
               <%= f.select :product_status,  OrderItem.product_statuses.keys.map {|k| [I18n.t("enums.order_item.product_status.#{k}"), k]} %>
             </td>
             <td>
               <%= f.submit "更新" , class: "btn btn-success btn-sm" %>
               <% end %>
             </td>
+<<<<<<< HEAD
             </tr>
             <% end %>
+=======
+          </tr>
+          <% end %>
+>>>>>>> origin/main
         </tbody>
       </table>
       </div>
